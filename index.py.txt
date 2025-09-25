@@ -1,0 +1,22 @@
+# theunknown
+
+import socket
+
+# Define the target host and port
+target_host = "example.com"  # Replace with the actual hostname or IP
+target_port = 80  # HTTP default port
+
+# Create socket
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect the client
+client.connect((target_host, target_port))
+
+# Send some data (HTTP GET request)
+request = "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n"
+client.send(request.encode())
+
+# Receive some data
+response = client.recv(4096)
+
+print(response.decode())
